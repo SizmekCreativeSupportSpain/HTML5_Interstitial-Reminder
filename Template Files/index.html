@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/> 
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/> 
+ 		<title>Inter + Reminder Workspaces</title>
+        <link rel="stylesheet" href="style.css"/>
+        <script type="text/javascript" src="adConfig.js"></script>
+        <script type="text/javascript" src="js/EBLoader.js"></script>
+        <script>
+        	var clickBtn;
+
+			function startAd() {
+				var banner = document.getElementById("banner");
+				banner.style.width = adConfig.reminder_width+"px";
+				banner.style.height = adConfig.reminder_height+"px";
+				
+				clickBtn = document.getElementById("clickBtn");
+				clickBtn.addEventListener("click", function(){
+					    EB.clickthrough("Click_Reminder");
+				});
+			}
+        </script>
+	</head>
+
+	<body>
+        <div id="banner">
+        	<button id="clickBtn"></button>
+            <img src="images/backup.jpg" alt="bgImage" />
+        </div>
+	</body>
+</html>
+
