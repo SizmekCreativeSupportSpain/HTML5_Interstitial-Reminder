@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/> 
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/> 
+		<title>Interstitial</title>
+        <link rel="stylesheet" href="style.css"/>
+        <script type="text/javascript" src="../adConfig.js"></script>
+        <script type="text/javascript" src="../js/EBLoader.js"></script>
+        
+		<script>
+			var clickBtn;
+			
+			function startAd() {
+				var panel = document.getElementById("expansion");
+				panel.style.width = adConfig.inter_width+"px";
+				panel.style.height = adConfig.inter_height+"px";
+
+				clickBtn = document.getElementById("clickthroughButton");
+
+				clickBtn.addEventListener('click',function(){
+					EB.clickthrough("Click_Interstitial");
+				})
+
+				document.getElementById("closeButton").onclick = function(){
+					EB.collapse({panelName: "inter",
+				                actionType: EBG.ActionType.USER});
+				}
+				if (is_touch_device() === false) {
+					clickBtn.addEventListener("mouseout", isReallyOutBanner);
+					clickBtn.addEventListener("mouseleave", isReallyOutBanner);
+				}
+			}
+
+			function isReallyOutBanner(event){
+				if(event.clientX>=adConfig.inter_width || event.clientX<=0 || event.clientY>=adConfig.inter_height || event.clientY<=0){
+					EB.collapse({panelName: "inter",
+				                actionType: EBG.ActionType.USER});
+			    }
+			}	
+			
+		</script>
+	</head>
+	<body>
+		<div id="expansion">
+			<button id="closeButton" class="button">X | CERRAR</button>
+			<button id="clickthroughButton" class="button"></button>
+			<img src="images/inter.png" alt="bgInter" class="centered" />
+		</div>
+	</body>
+</html>
+
