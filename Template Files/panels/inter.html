@@ -27,9 +27,13 @@
 				                actionType: EBG.ActionType.USER});
 				}
 				if (is_touch_device() === false) {
-					clickBtn.addEventListener("mouseout", isReallyOutBanner);
+					//clickBtn.addEventListener("mouseout", isReallyOutBanner);
 					clickBtn.addEventListener("mouseleave", isReallyOutBanner);
 				}
+				setTimeout(function(){
+					EB.collapse({panelName: "inter",
+                    			actionType: EBG.ActionType.AUTO});
+				},adConfig.auto_cierre );
 			}
 
 			function isReallyOutBanner(event){
